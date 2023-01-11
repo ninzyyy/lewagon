@@ -9,7 +9,7 @@ def add_comma(a_string):
     returns a copy of the string with every word separated by a comma
     example: add_comma("John Peter Jude") => "John, Peter, Jude"
     """
-    return a_string.split().join(', ')
+    return a_string.replace(" ", ", ")
 
 def belongs_to(a_string, a_word):
     """
@@ -38,14 +38,13 @@ def remove_surrounding_whitespaces(a_string):
     example: delete_surrounding_whitespaces("  hey yo  ") => "hey yo"
     """
     return a_string.strip()
-    #a_string.strip().rstrip()
 
 def replace(initial_string, old_letter, new_letter):
     """
     returns a copy of the string with the new letter replacing the old one
     example: replace("casanova", "a", "o") => "cosonovo"
     """
-    return initial_string.replace("old_letter", "new_letter")
+    return initial_string.replace(old_letter, new_letter)
 
 def full_description_concatenation(first_name, last_name, age):
     """
