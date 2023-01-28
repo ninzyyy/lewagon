@@ -2,7 +2,6 @@
 """
 Client of the Wagon OpenGraph API
 """
-
 import requests
 
 def fetch_metadata(url):
