@@ -80,5 +80,3 @@ def load_model(stage="Production") -> keras.Model:
         print("✅ Model loaded from local disk")
 
         return latest_model
-
-
