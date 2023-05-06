@@ -16,9 +16,9 @@ tests/api/test_cloud_endpoints.py::test_cloud_api_predict FAILED         [ 50%]
 tests/api/test_endpoints.py::test_root_is_up PASSED                      [ 58%]
 tests/api/test_endpoints.py::test_root_returns_greeting PASSED           [ 66%]
 tests/api/test_endpoints.py::test_predict_is_up PASSED                   [ 75%]
-tests/api/test_endpoints.py::test_predict_is_dict FAILED                 [ 83%]
-tests/api/test_endpoints.py::test_predict_has_key FAILED                 [ 91%]
-tests/api/test_endpoints.py::test_predict_val_is_float FAILED            [100%]
+tests/api/test_endpoints.py::test_predict_is_dict PASSED                 [ 83%]
+tests/api/test_endpoints.py::test_predict_has_key PASSED                 [ 91%]
+tests/api/test_endpoints.py::test_predict_val_is_float PASSED            [100%]
 
 =================================== FAILURES ===================================
 _______________________________ test_root_is_up ________________________________
@@ -35,7 +35,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x128f0e260>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x1633c7ac0>
 url = None, kwargs = {}
 
     def __init__(
@@ -104,7 +104,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x128fe3eb0>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x16348bd60>
 url = None, kwargs = {}
 
     def __init__(
@@ -173,7 +173,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x1291b6c20>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x163642d40>
 url = None, kwargs = {}
 
     def __init__(
@@ -242,7 +242,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x128fd7df0>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x163493cd0>
 url = None, kwargs = {}
 
     def __init__(
@@ -311,7 +311,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x1291b66e0>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x163643220>
 url = None, kwargs = {}
 
     def __init__(
@@ -380,7 +380,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     self._base_url = self._enforce_trailing_slash(URL(base_url))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x128fe3c40>
+self = <[AttributeError("'URL' object has no attribute '_uri_reference'") raised in repr()] URL object at 0x16348bd30>
 url = None, kwargs = {}
 
     def __init__(
@@ -435,42 +435,6 @@ url = None, kwargs = {}
 E           TypeError: Invalid type for url.  Expected str or httpx.URL, got <class 'NoneType'>: None
 
 ../../../.pyenv/versions/3.10.6/envs/taxifare-env/lib/python3.10/site-packages/httpx/_urls.py:117: TypeError
-_____________________________ test_predict_is_dict _____________________________
-
-    @pytest.mark.asyncio
-    async def test_predict_is_dict():
-        from taxifare.api.fast import app
-        async with AsyncClient(app=app, base_url="http://test") as ac:
-            response = await ac.get("/predict", params=test_params)
->       assert isinstance(response.json(), dict)
-E       assert False
-E        +  where False = isinstance(None, dict)
-E        +    where None = <bound method Response.json of <Response [200 OK]>>()
-E        +      where <bound method Response.json of <Response [200 OK]>> = <Response [200 OK]>.json
-
-tests/api/test_endpoints.py:43: AssertionError
-_____________________________ test_predict_has_key _____________________________
-
-    @pytest.mark.asyncio
-    async def test_predict_has_key():
-        from taxifare.api.fast import app
-        async with AsyncClient(app=app, base_url="http://test") as ac:
-            response = await ac.get("/predict", params=test_params)
->       assert response.json().get('fare_amount', False)
-E       AttributeError: 'NoneType' object has no attribute 'get'
-
-tests/api/test_endpoints.py:52: AttributeError
-__________________________ test_predict_val_is_float ___________________________
-
-    @pytest.mark.asyncio
-    async def test_predict_val_is_float():
-        from taxifare.api.fast import app
-        async with AsyncClient(app=app, base_url="http://test") as ac:
-            response = await ac.get("/predict", params=test_params)
->       assert isinstance(response.json().get('fare_amount'), float)
-E       AttributeError: 'NoneType' object has no attribute 'get'
-
-tests/api/test_endpoints.py:60: AttributeError
 =========================== short test summary info ============================
 FAILED tests/api/test_cloud_endpoints.py::test_root_is_up - TypeError: Invali...
 FAILED tests/api/test_cloud_endpoints.py::test_root_returns_greeting - TypeEr...
@@ -478,7 +442,4 @@ FAILED tests/api/test_cloud_endpoints.py::test_predict_is_up - TypeError: Inv...
 FAILED tests/api/test_cloud_endpoints.py::test_predict_is_dict - TypeError: I...
 FAILED tests/api/test_cloud_endpoints.py::test_predict_has_key - TypeError: I...
 FAILED tests/api/test_cloud_endpoints.py::test_cloud_api_predict - TypeError:...
-FAILED tests/api/test_endpoints.py::test_predict_is_dict - assert False
-FAILED tests/api/test_endpoints.py::test_predict_has_key - AttributeError: 'N...
-FAILED tests/api/test_endpoints.py::test_predict_val_is_float - AttributeErro...
-========================= 9 failed, 3 passed in 0.32s ==========================
+================== 6 failed, 6 passed, 112 warnings in 17.28s ==================
