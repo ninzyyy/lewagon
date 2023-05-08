@@ -15,8 +15,6 @@ from keras.callbacks import EarlyStopping
 end = time.perf_counter()
 print(f"\n✅ TensorFlow loaded ({round(end - start, 2)}s)")
 
-
-
 def initialize_model(input_shape: tuple) -> Model:
     """
     Initialize the Neural Network with random weights
